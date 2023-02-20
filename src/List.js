@@ -1,6 +1,13 @@
 import React from 'react'
 
-const List = ({people}) => {
+const List = ({people, setPeople}) => {
+
+ const removePerson = (id) => {
+    const newList = people.filter((person) => person.id !== id)
+    setPeople(newList)
+ }
+
+
   return (
     <div>
       {people.map((person) => {
@@ -15,7 +22,7 @@ const List = ({people}) => {
             <p>{age} Yaşında</p>
           </div>
 
-           <button className='remove-btn'> Tebriği Sil </button>
+        <button className='remove-btn' onClick={() => removePerson(id)}>Tebriği Sil</button>
 
           </article>  
         )
